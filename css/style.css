@@ -1,0 +1,75 @@
+* {
+    border: 2px solid goldenrod;
+}
+
+
+#device {
+  background-color: blue;
+  text-align: center;
+  width: 400px;
+  height: 450px;
+  padding: 20px;
+  border-radius: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+}
+
+#screen {
+  background-color: lightgray;
+  padding: 20px;
+  width: 75%;
+  height: 250px;
+}
+#button-container{
+  align-self: flex-end;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+  width: 100px;
+  height: 35px;
+  margin: 10px;
+}
+
+.pet {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  margin: 100px 20px 20px 100px;
+  border-radius: 50px;
+  animation: 8s infinite alternate-reverse petmotion;
+  transform-origin: bottom;
+}
+
+@keyframes petmotion {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 85%;
+    transform: translateY(0);
+  }
+  65% {
+    transform: translateY(-50px);
+  }
+    
+    80% {
+    transform: translateY(0);
+  }
+  100% {
+    margin-left: 0%;
+    transform: translateY(0);
+  }
+}
+#new-game {
+  text-align: center;
+  margin-left: 10%;
+}
+
+/* Note: add multiple classes to differentiate b/n alive, morphed, dead, etc. Add/remove appropriate classes in JS */
