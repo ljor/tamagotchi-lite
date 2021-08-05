@@ -22,7 +22,10 @@ class Pet {
 
     lifeCycle() {
         let timeInterval = setInterval(()=>{
-          this.deathCheck(timeInterval)
+          if (this.alive === false) {
+            clearInterval(timeInterval)
+          }
+          this.deathCheck()
           this.counter++
           if(this.counter % 2 === 0) {
             this.hunger++
@@ -81,12 +84,11 @@ class Pet {
       }, 500)
     }
 
-    deathCheck(timer) {
+    deathCheck() {
       if (this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10 || this.age === 35) {
         document.querySelector('.pet').style.animation = 'none'
         petFeedbackSelector.innerText = '*is dead*'
         this.alive = false
-        clearInterval(timer)
       }
     }
   }
@@ -94,6 +96,13 @@ class Pet {
   // aka the new game function
   const newPet = () => {
     petName = document.getElementById('pet-name').value
+
+    // kills off old pet, if any
+    if(myPet) {
+      myPet.alive = false
+    }
+
+    petFeedbackSelector.innerText = ''
 
     myPet = new Pet(petName)
     document.querySelector('#screen').style.backgroundColor = 'lightgray'
@@ -126,7 +135,3 @@ class Pet {
     // display pet name
 
   // extra: have an array of multiple pet images to cycle through, so that player gets a random pet each time
-  
-//                              debug
-
-  // solve overlapping pet instances
