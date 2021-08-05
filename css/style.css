@@ -23,6 +23,13 @@
   width: 75%;
   height: 250px;
 }
+.day {
+  background-color: lightgray;
+}
+.night {
+  background-color: darkgray;
+}
+
 #button-container{
   align-self: flex-end;
 }
@@ -35,6 +42,7 @@ button {
   width: 100px;
   height: 35px;
   margin: 10px;
+  cursor: pointer;
 }
 
 .pet {
