@@ -15,6 +15,8 @@ class Pet {
       this.hunger = 0
       this.sleepiness = 0
       this.boredom = 0
+      this.alive = true
+      this.lightsOn = true
       this.counter = 0
     }
 
@@ -30,7 +32,7 @@ class Pet {
             this.boredom++
             boredomTracker.innerText = `${this.boredom}`
           }
-          if(this.counter % 4 === 0){
+          if(this.counter % 4 === 0 && this.lightsOn === true){
             this.sleepiness++
             sleepTracker.innerText = `${this.sleepiness}`
           }
@@ -42,7 +44,7 @@ class Pet {
     }
 
     feed() {
-      if (this.hunger > 0) {
+      if (this.lightsOn === true && this.hunger > 0 && this.alive === true) {
         this.hunger--
         hungerTracker.innerText = `${this.hunger}`
         petFeedbackSelector.innerText = '*nom nom nom*'
@@ -50,7 +52,7 @@ class Pet {
     }
 
     play() {
-      if (this.boredom > 0) {
+      if (this.lightsOn === true && this.boredom > 0 && this.alive === true) {
         this.boredom--
         boredomTracker.innerText = `${this.boredom}`
         petFeedbackSelector.innerText = '*happy noises*'
@@ -58,21 +60,32 @@ class Pet {
     }
 
     lights() {
-      if (this.sleepiness > 0) {
-        this.sleepiness--
-        sleepTracker.innerText = `${this.sleepiness}`
+      if (this.lightsOn === true && this.alive === true) {
+        document.querySelector('#screen').style.backgroundColor = 'darkgray'
+        document.querySelector('.pet').style.animation = 'none'
         petFeedbackSelector.innerText = '*zzz*'
+        this.lightsOn = false
+      } else if (this.lightsOn === false && this.alive === true) {
+        document.querySelector('#screen').style.backgroundColor = 'lightgray'
+        document.querySelector('.pet').style.animation = '8s infinite alternate-reverse petmotion'
+        petFeedbackSelector.innerText = '*looks rested*'
+        this.lightsOn = true
       }
+      let restInterval = setInterval(()=> {
+        if (this.lightsOn === false && this.sleepiness > 0 && this.alive === true) {
+          this.sleepiness--
+          sleepTracker.innerText = `${this.sleepiness}`
+        } else if (this.lightsOn === true && this.sleepiness > 0 && this.alive === true) {
+          clearInterval(restInterval)
+        }
+      }, 500)
     }
 
     deathCheck(timer) {
       if (this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10 || this.age === 35) {
         document.querySelector('.pet').style.animation = 'none'
         petFeedbackSelector.innerText = '*is dead*'
-        document.querySelector('#feed').disabled = true
-        document.querySelector('#lights').disabled = true
-        document.querySelector('#play').disabled = true
-        console.log(`${this.name} has died`)
+        this.alive = false
         clearInterval(timer)
       }
     }
@@ -82,19 +95,14 @@ class Pet {
   const newPet = () => {
     petName = document.getElementById('pet-name').value
 
-    document.querySelector('#feed').disabled = false
-    document.querySelector('#lights').disabled = false
-    document.querySelector('#play').disabled = false
-
     myPet = new Pet(petName)
+    document.querySelector('#screen').style.backgroundColor = 'lightgray'
     document.querySelector('.pet').style.animation = '8s infinite alternate-reverse petmotion'
-    myPet.sleepiness = 0
+    
+    // resets tracker displays of previous pet
     sleepTracker.innerText = `${myPet.sleepiness}`
-    myPet.boredom = 0
     boredomTracker.innerText = `${myPet.boredom}`
-    myPet.hunger = 0
     hungerTracker.innerText = `${myPet.hunger}`
-    myPet.age = 0
     ageTracker.innerText = `${myPet.age}`
     console.log(myPet)
     myPet.lifeCycle()
@@ -109,8 +117,6 @@ class Pet {
 // ------------------------------------------------------------------------//
 
 //                                tasks
-
-  // update lights to turn on/off -- if possible, stop increment while lights are off
 
   // add morphs when pet hit certain ages (separate function, checked in the age cycle, I'm thinking) -- test as CSS scaling on pet div
 
