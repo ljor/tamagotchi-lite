@@ -73,13 +73,11 @@ class Pet {
       if (this.lightsOn === true && this.alive === true) {
         document.querySelector('#screen').style.backgroundColor = 'darkgray'
         petGraphic.style.opacity = 0
-        // document.querySelector('.pet').style.animation = 'none'
         petFeedbackSelector.innerText = '*zzz*'
         this.lightsOn = false
       } else if (this.lightsOn === false && this.alive === true) {
         document.querySelector('#screen').style.backgroundColor = 'lightgray'
         petGraphic.style.opacity = 1
-        // document.querySelector('.pet').style.animation = '8s infinite alternate-reverse petmotion'
         petFeedbackSelector.innerText = '*looks rested*'
         this.lightsOn = true
       }
