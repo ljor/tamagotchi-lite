@@ -7,7 +7,7 @@ const nameTracker = document.querySelector('#name')
 const petFeedbackSelector = document.querySelector('#message > p')
 const petGraphic = document.querySelector('#pet')
 
-const petGraphicsArr = [['img/ghostly1.gif', 'img/ghostly2.gif', 'img/ghostly3.gif'],['img/mork1.gif', 'img/mork2.gif', 'img/mork3.gif']]
+const petGraphicsArr = [['img/ghostly1.gif', 'img/ghostly2.gif', 'img/ghostly3.gif'],['img/mork1.gif', 'img/mork2.gif', 'img/mork3.gif'], ['img/blink1.gif', 'img/blink2.gif', 'img/blink3.gif']]
 
 let petName = ''
 let myPet
