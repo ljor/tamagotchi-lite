@@ -105,6 +105,8 @@ class Pet {
     deathCheck() {
       if (this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10 || this.age === 35) {
         document.querySelector('.pet').style.animation = 'none'
+        petGraphic.src = 'img/gravestone.png'
+        petGraphic.style.width = '120%'
         petFeedbackSelector.innerText = '*is dead*'
         this.alive = false
       }
