@@ -13,6 +13,8 @@ body{
 }
 #device {
   background-color: rgb(164, 155, 247);
+  background-image: radial-gradient(ellipse, rgb(39, 33, 88) 0, white 5%, rgb(76, 66, 163) 100%);
+  background-size: 100%;
   text-align: center;
   max-width: 400px;
   height: 450px;
@@ -22,12 +24,13 @@ body{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  align-content: space-around;
+  flex-direction: column;
   filter: drop-shadow(15px 10px 25px rgb(31, 15, 68));
 }
 
 #screen {
   background-color: lightgray;
+  font-size: 15px;
   padding: 20px;
   width: 75%;
   height: 220px;
@@ -39,6 +42,7 @@ body{
 
 #button-container{
   display: flex;
+  margin-top: 10px;
 }
 
 h1 {
@@ -61,12 +65,15 @@ p {
 
 button {
   font-family: 'Sniglet', cursive;
+  border: none;
   width: 100px;
   height: 35px;
   margin: 10px;
   cursor: pointer;
 }
-
+input {
+  border: none;
+}
 .pet {
   width: 75px;
   height: 75px;
