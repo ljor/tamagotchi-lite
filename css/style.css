@@ -1,6 +1,3 @@
-/* * {
-    border: 2px solid goldenrod;
-} */
 body{
   background-color: rgb(166, 250, 243);
   font-family: 'Sniglet', cursive;
@@ -48,6 +45,7 @@ body{
 h1 {
   font-family: 'Chewy', cursive;
   font-size: 3.75em;
+  margin-bottom: 10px;
   background-color: #e63295;
   background-image: linear-gradient(180deg, #ee3fa5, #e0e242);
   background-size: 100%;
@@ -63,17 +61,40 @@ p {
   margin: 0;
 }
 
+label {
+  font-family: 'Sniglet', cursive;
+  font-size: 20px;
+  color: rgb(53, 26, 114);
+}
+
 button {
   font-family: 'Sniglet', cursive;
+  letter-spacing: 1.5px;
+  color: white;
+  font-size: 18px;
+  background-color: #ee3fa5;
   border: none;
-  width: 100px;
-  height: 35px;
-  margin: 10px;
+  width: 120px;
+  height: 38px;
+  margin: 5px;
   cursor: pointer;
+  display: inline-block;
 }
+
+#inputs {
+  margin-bottom: 20px;
+  margin-top: 0px;
+  display: flex;
+  align-items: baseline;
+}
+
 input {
   border: none;
+  height: 35px;
+  width: 200px;
+  margin: 10px;
 }
+
 .pet {
   width: 75px;
   height: 75px;
@@ -97,7 +118,7 @@ input {
     transform: translateY(-50px);
   }
     
-    80% {
+  80% {
     transform: translateY(0);
   }
   100% {
@@ -110,4 +131,19 @@ input {
   margin-left: 10%;
 }
 
-/* Note: add multiple classes to differentiate b/n alive, morphed, dead, etc. Add/remove appropriate classes in JS */
+.button {
+  width: 110px;
+  height: 60px;
+}
+
+#feed {
+  border-radius: 5px 5px 5px 75px;
+}
+
+#lights {
+ border-radius: 5px;
+}
+
+#play {
+  border-radius: 5px 5px 75px 5px;
+}
