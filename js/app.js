@@ -4,6 +4,9 @@ const boredomTracker = document.querySelector('#boredom')
 const ageTracker = document.querySelector('#age')
 const hungerTracker = document.querySelector('#hunger')
 const petFeedbackSelector = document.querySelector('#message > p')
+const petGraphic = document.querySelector('#pet')
+
+const petGraphicsArr = [['img/ghostly1.gif', 'img/ghostly2.gif', 'img/ghostly3.gif'],['img/mork1.gif', 'img/mork2.gif', 'img/mork3.gif']]
 
 let petName = ""
 let myPet
@@ -18,31 +21,33 @@ class Pet {
       this.alive = true
       this.lightsOn = true
       this.counter = 0
+      this.appearance = []
     }
 
     lifeCycle() {
         let timeInterval = setInterval(()=>{
+          this.deathCheck()
           if (this.alive === false) {
             clearInterval(timeInterval)
-          }
-          this.deathCheck()
-          this.counter++
-          if(this.counter % 2 === 0) {
-            this.hunger++
-            hungerTracker.innerText = `${this.hunger}`
-          }
-          if(this.counter % 3 === 0) {
-            this.boredom++
-            boredomTracker.innerText = `${this.boredom}`
-          }
-          if(this.counter % 4 === 0 && this.lightsOn === true){
-            this.sleepiness++
-            sleepTracker.innerText = `${this.sleepiness}`
-          }
-          if(this.counter % 6 === 0) {
-          this.age++
-          ageTracker.innerText = `${this.age}`
-          }
+          } else {
+            this.counter++
+            if(this.hunger < 10 && this.counter % 2 === 0) {
+              this.hunger++
+              hungerTracker.innerText = `${this.hunger}`
+            }
+            if(this.boredom < 10 && this.counter % 3 === 0) {
+              this.boredom++
+              boredomTracker.innerText = `${this.boredom}`
+            }
+            if(this.sleepiness < 10 && this.counter % 4 === 0 && this.lightsOn === true){
+              this.sleepiness++
+              sleepTracker.innerText = `${this.sleepiness}`
+            }
+            if(this.age < 10 && this.counter % 6 === 0) {
+            this.age++
+            ageTracker.innerText = `${this.age}`
+            }
+        }
         }, 500)
     }
 
@@ -106,6 +111,11 @@ class Pet {
 
     myPet = new Pet(petName)
     document.querySelector('#screen').style.backgroundColor = 'lightgray'
+    let randIndex = Math.floor(Math.random() * petGraphicsArr.length)
+    myPet.appearance = petGraphicsArr[randIndex]
+    console.log(myPet.appearance[0])
+    petGraphic.src = `${myPet.appearance[0]}`
+
     document.querySelector('.pet').style.animation = '8s infinite alternate-reverse petmotion'
     
     // resets tracker displays of previous pet

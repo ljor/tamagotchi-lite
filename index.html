@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Rajdhani:wght@500&family=Sniglet&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>Tamagotchi Lite</title>
+    <title>Tamagotchi-Lite</title>
 </head>
 <body>
-  <input type="text" id="pet-name">
-    <button id="new-pet">New Pet</button>
-<div id="device">
-  <div id="screen">
-    <div id="trackers">
-      <p>Age: <span id='age'>0</span> Hunger: <span id='hunger'>0</span> Tiredness: <span id='tiredness'>0</span> Boredom: <span id='boredom'>0</span></p>
+  <div id="container">
+    <h1>TAMAGOTCHI-LITE</h1>
+    <div>
+      <label for="pet-name">Pet Name:</label>
+      <input type="text" id="pet-name">
+      <button id="new-pet">Create Pet</button>
     </div>
-    <div class="pet"></div>
-    <div id="message">
-      <p>*looks bored*</p>
+  <div id="device">
+    <div id="screen">
+      <div id="trackers">
+        <p>Age: <span id='age'>0</span> Hunger: <span id='hunger'>0</span> Tiredness: <span id='tiredness'>0</span> Boredom: <span id='boredom'>0</span></p>
+      </div>
+      <div class="pet"><img id="pet"></div>
+      <div id="message">
+        <p>*looks bored*</p>
+      </div>
     </div>
+      <button class="button" id="feed">Feed</button>
+      <button class="button" id="lights">Lights</button>
+      <button class="button" id="play">Play</button>
   </div>
-    <button class="button" id="feed">Feed</button>
-    <button class="button" id="lights">Lights</button>
-    <button class="button" id="play">Play</button>
 </div>
     <script type="text/javascript" src="js/app.js"></script>
 </body>
