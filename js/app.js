@@ -43,8 +43,9 @@ class Pet {
               this.sleepiness++
               sleepTracker.innerText = `${this.sleepiness}`
             }
-            if(this.age < 10 && this.counter % 6 === 0) {
+            if(this.age < 35 && this.counter % 6 === 0) {
             this.age++
+            this.morphCheck()
             ageTracker.innerText = `${this.age}`
             }
         }
@@ -70,11 +71,13 @@ class Pet {
     lights() {
       if (this.lightsOn === true && this.alive === true) {
         document.querySelector('#screen').style.backgroundColor = 'darkgray'
+        petGraphic.style.opacity = 0
         document.querySelector('.pet').style.animation = 'none'
         petFeedbackSelector.innerText = '*zzz*'
         this.lightsOn = false
       } else if (this.lightsOn === false && this.alive === true) {
         document.querySelector('#screen').style.backgroundColor = 'lightgray'
+        petGraphic.style.opacity = 1
         document.querySelector('.pet').style.animation = '8s infinite alternate-reverse petmotion'
         petFeedbackSelector.innerText = '*looks rested*'
         this.lightsOn = true
@@ -87,6 +90,16 @@ class Pet {
           clearInterval(restInterval)
         }
       }, 500)
+    }
+
+    morphCheck(){
+      if (this.age === 20) {
+        petGraphic.style.width = '110%'
+      } else if (this.age === 10) {
+        petGraphic.src = `${this.appearance[2]}`
+      } else if (this.age === 5) {
+        petGraphic.src = `${this.appearance[1]}`
+      }
     }
 
     deathCheck() {
@@ -113,8 +126,8 @@ class Pet {
     document.querySelector('#screen').style.backgroundColor = 'lightgray'
     let randIndex = Math.floor(Math.random() * petGraphicsArr.length)
     myPet.appearance = petGraphicsArr[randIndex]
-    console.log(myPet.appearance[0])
     petGraphic.src = `${myPet.appearance[0]}`
+    petGraphic.style.width = '100%'
 
     document.querySelector('.pet').style.animation = '8s infinite alternate-reverse petmotion'
     
@@ -132,16 +145,3 @@ class Pet {
   document.querySelector('#play').addEventListener('click', ()=>{myPet.play()})
   document.querySelector('#lights').addEventListener('click', ()=>{myPet.lights()})
   document.querySelector('#new-pet').addEventListener('click', ()=>{newPet()})
-
-// ------------------------------------------------------------------------//
-
-//                                tasks
-
-  // add morphs when pet hit certain ages (separate function, checked in the age cycle, I'm thinking) -- test as CSS scaling on pet div
-
-  // Stylize the page
-    // pet "sprite"
-    // flexbox working
-    // display pet name
-
-  // extra: have an array of multiple pet images to cycle through, so that player gets a random pet each time
