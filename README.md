@@ -16,9 +16,12 @@ Gameplay:
 - sound effects on feed/sleep/play button clicks
 - eating/sleeping/playing animations
 - entering name also works with a press of the enter button on a keyboard
-- add feedback on why pet died (starved, )
+- add feedback on why pet died (starved, lack of sleep, etc.)
+- winning game condition
+- slow down timers (they don't need to tick so fast anymore)
 
 Display/Graphics:
 - more flexible display for multiple devices
 - add a fun background
 - improve button appearance
+- add some more little pets to randomize
